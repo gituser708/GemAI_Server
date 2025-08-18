@@ -81,25 +81,21 @@ const userCtrl = {
     }),
 
     logout: asyncHandler(async (req, res) => {
-        logout: asyncHandler(async (req, res) => {
-  try {
-    const cookieConfig = {
-      httpOnly: true,
-      secure: true,      // required on Render (HTTPS)
-      sameSite: "none"   // needed for cross-site cookies
-    };
+        try {
+            const cookieConfig = {
+            httpOnly: true,
+            secure: true,      
+            sameSite: "none"   
+            };
 
-    // Clear the cookie with same options as login
-    res.clearCookie("token", cookieConfig);
+            res.clearCookie("token", cookieConfig);
 
-    res.status(200).json({ message: "You are logged out" });
-  } catch (error) {
-    console.error("Logout error:", error);
-    res.status(500).json({ message: error.message });
-  }
-}),
-
-    }),
+            res.status(200).json({ message: "You are logged out" });
+        } catch (error) {
+            console.error("Logout error:", error);
+            res.status(500).json({ message: error.message });
+        }
+        }),
 
     profile: asyncHandler(async (req, res) => {
         try {

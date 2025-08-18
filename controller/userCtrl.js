@@ -95,7 +95,8 @@ const userCtrl = {
         console.error(error);
         res.status(500).json({ message: error.message });
         }
-  }),
+    }),
+    
     profile: asyncHandler(async (req, res) => {
         try {
             const user = await User.findById(req.user.id).select("-password")

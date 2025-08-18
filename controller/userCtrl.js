@@ -55,7 +55,7 @@ const userCtrl = {
                 res.status(400);
                 throw new Error('Invalid email or password!');
             };
-            const isMatch = await bcrypt.compare(password, user.password);
+            const isMatch = bcrypt.compare(password, user.password);
 
             if (!isMatch) {
                 res.status(400);
@@ -170,7 +170,7 @@ const userCtrl = {
       res.cookie("token", token, {
         httpOnly: true,
         secure: true, 
-        sameSite: "strict",
+        sameSite: "none",
         maxAge: 30 * 24 * 60 * 60 * 1000,
       });
 

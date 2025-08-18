@@ -14,7 +14,7 @@ const app = express();
 
 //! cors setup
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: 'https://gemai-web-app.onrender.com',
     credentials: true
 }));
 

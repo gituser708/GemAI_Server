@@ -82,21 +82,20 @@ const userCtrl = {
 
     logout: asyncHandler(async (req, res) => {
         try {
-            const cookieConfig = {
+        const cookieConfig = {
             httpOnly: true,
-            secure: true,      
-            sameSite: "none"   
-            };
+            secure: true,
+            sameSite: "none",
+            path: "/"
+        };
 
-            res.clearCookie("token", cookieConfig);
-
-            res.status(200).json({ message: "You are logged out" });
+        res.clearCookie("token", cookieConfig);
+        res.status(200).json({ message: "You are logged out" });
         } catch (error) {
-            console.error("Logout error:", error);
-            res.status(500).json({ message: error.message });
+        console.error(error);
+        res.status(500).json({ message: error.message });
         }
-        }),
-
+  }),
     profile: asyncHandler(async (req, res) => {
         try {
             const user = await User.findById(req.user.id).select("-password")

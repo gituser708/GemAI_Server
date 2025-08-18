@@ -11,7 +11,7 @@ by prompt and power of GeminiAI with payment stripe for subscribe paid plan get 
 
 ## 🌐 Live API
 
-[https://extraker-project-server.onrender.com]
+[https://gemai-server.onrender.com]
 
 ## 🧰 Tech Stack
 

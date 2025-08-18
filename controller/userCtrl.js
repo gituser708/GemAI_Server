@@ -81,13 +81,24 @@ const userCtrl = {
     }),
 
     logout: asyncHandler(async (req, res) => {
-        try {
-            res.cookie("token", "", { maxAge: 1 });
-            res.status(200).json({ message: 'You are logged out' });
-        } catch (error) {
-            res.json({ message: error.message });
-            console.log(error);
-        };
+        logout: asyncHandler(async (req, res) => {
+  try {
+    const cookieConfig = {
+      httpOnly: true,
+      secure: true,      // required on Render (HTTPS)
+      sameSite: "none"   // needed for cross-site cookies
+    };
+
+    // Clear the cookie with same options as login
+    res.clearCookie("token", cookieConfig);
+
+    res.status(200).json({ message: "You are logged out" });
+  } catch (error) {
+    console.error("Logout error:", error);
+    res.status(500).json({ message: error.message });
+  }
+}),
+
     }),
 
     profile: asyncHandler(async (req, res) => {
